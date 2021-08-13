@@ -1,0 +1,16 @@
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal">x</button>
+  <h4 class="modal-title" id="myModalLabel"><%=@follow_text%></h4>
+</div>
+<div class="modal-body">
+  <% @users.each do |user| %>
+  	<div>
+  		<h3>Name:</h3>
+  		<span><%=user.name%></span>
+  		<h3>Profile:</h3>
+  		<span>
+  			<%= link_to "Profile", "/user_profile/#{user.profile_url}" %>
+  		</span>
+  	</div>
+  <% end %>
+</div>

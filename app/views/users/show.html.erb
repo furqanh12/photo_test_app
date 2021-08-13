@@ -1,0 +1,42 @@
+<% provide(:title, @user.name) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section>
+      <h1>
+        Name: <%= @user.name %>
+      </h1>
+      <span>
+        Following:
+        <%= link_to @user.followers.count, followers_user_path(@user),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-primary btn-lg'}  %>
+      </span>
+      <span>
+        Followers:
+        <%= link_to @user.followees.count, following_user_path(@user),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-primary btn-lg'}  %>
+      </span>
+      
+
+    </section>
+  </aside>
+  
+  <section id="all-links">
+    <% if @current_user.followees.include?(@user) %>
+        <h5><%= button_to "Unfollow", unfollow_user_path(@user), method: "POST", class: "btn btn-danger" %></h5>
+    <% elsif  @user.id != @current_user.id %>
+      <h5><%= button_to "Follow", follow_user_path(@user), method: "POST", class: "btn btn-primary"  %></h5>
+    <% end%>
+    
+    <br>
+  </section>
+  <div>
+    <h3>Public Albums</h3>
+    <% @albums.each do |album| %>
+      <%= link_to album.name, album_pictures_path(album) %>
+    <% end %>
+  </div>
+</div>
+
+<div id="modal-window" class="modal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content"></div>
+  </div>
+</div>

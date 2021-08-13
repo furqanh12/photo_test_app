@@ -1,0 +1,45 @@
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<%= form_with model: @album, local: true do |f| %>
+    
+
+	    <%= f.label :name %>
+	    <%= f.text_field :name, class: 'form-control' %>
+
+	    <%= f.label :privacy %>
+	    <%= f.select :privacy, Album::GROUPS %>
+
+	    <%= f.fields_for :pictures do |picture_field| %>
+		    <div class="field">
+		       <%= picture_field.label "Add multiple pictures" %><br>
+		       <%= picture_field.file_field :avatar, multiple: true, name: "pictures[avatar][]", id: "file-input" %>
+		    </div>
+  		<% end %>
+  		<%= f.submit "Create Album", class: "btn btn-primary" %>
+    	<% end %>
+  	</div>
+</div>
+
+<script type="text/javascript">
+	$( document ).ready(function() {
+    	console.log( "ready!" );
+    	const input = document.getElementById('file-input')
+
+		input.addEventListener('change', (event) => {
+		  const target = event.target
+		  const fileLength = $("#file-input").get(0).files.length;
+		  if (fileLength > 10) {
+			  alert("Only Ten Images are allowed");
+			  return;
+		  }
+	  	if (target.files && target.files[0]) {
+	  		console.log('target', target.value)
+	  		const maxAllowedSize = 500000;
+	      if (target.files[0].size > maxAllowedSize) {
+	      	alert('Max file size allowed is 500KB')
+	       	target.value = ''
+	      }
+		  }
+		})
+	});
+</script>

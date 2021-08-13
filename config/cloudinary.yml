@@ -1,0 +1,7 @@
+---
+development:
+  cloud_name: dwlstwcc4
+  api_key: '822881368753368'
+  api_secret: "ybftSOD0ExZiOcE27GrKwUib1cA"
+  enhance_image_tag: true
+  static_file_support: false

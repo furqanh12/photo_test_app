@@ -1,0 +1,7 @@
+<div class="row">
+  <div class="column">
+  	<% @pictures.each do |picture| %>
+		<%= cl_image_tag picture.avatar.key, :width=>150, :crop=>"fill" %>
+	<% end %>
+  </div>
+</div>
