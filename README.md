@@ -32,10 +32,16 @@ Next, migrate the database:
 $ rails db:migrate
 ```
 
+Next, seed the database with some sample data:
+
+```
+$ rails db:seed
+```
+
 Finally, run the test suite to verify that everything is working correctly:
 
 ```
-$ rails test
+$ rspec spec/models/user_spec.rb
 ```
 
 If the test suite passes, you'll be ready to run the app in a local server:
