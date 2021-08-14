@@ -9,5 +9,4 @@ class Album < ApplicationRecord
 	    private_view: 1,
   	}
   	has_many :pictures, dependent: :destroy
-  	scope 
 end
