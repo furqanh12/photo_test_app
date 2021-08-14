@@ -4,9 +4,6 @@ class HomeController < ApplicationController
   # before_action :correct_user,   only: :destroy
 
   def index
-    puts "current_user "*5
-    puts current_user.inspect
-
     @user = current_user
   end
 
