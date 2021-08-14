@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
   def show
     @current_user = current_user
-    @albums = current_user.albums.public_view
+    @albums = @user.albums.public_view
   end
 
   def new
